@@ -1,0 +1,89 @@
+body {
+    background-color: #110E1B;
+    color: white;
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.principal {
+    background-color: #202020;
+}
+
+.typewriter::after {
+    content: "|";
+    animation: blink 0.8s infinite;
+    margin-left: 5px;
+}
+
+.typewriter {
+    font-size: 40px;
+    font-family: "Special Gothic Expanded One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 40px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.resaltado {
+    color: #7C162E;
+    font-weight: bold;
+}
+
+.neon-text-red {
+    color: #7C162E;
+    text-align: center;
+    text-shadow: 
+      0 0 5px #3C162F,
+      0 0 10px #3C162F,
+      0 0 15px #3C162F,
+      0 0 20px #3C162F,
+      0 0 25px #3C162F;
+}
+
+.borde {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 3px solid #7C162E;
+    box-shadow: 0 0 15px rgba(124, 22, 46, 0.7);
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+@media (max-width: 768px) {
+    .typewriter {
+      font-size: 28px;
+    }
+
+    p {
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    #principal .row {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    img.borde {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+    }
+
+    .text-md-start {
+      text-align: center !important;
+    }
+}
