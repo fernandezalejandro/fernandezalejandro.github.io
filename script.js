@@ -2,7 +2,7 @@ var typed = new Typed('#element', {
     strings: [
         '<span class="texto-contorno">Desarrollo </span><span class="texto-neon">Full Stack</span>',
         '<span class="texto-contorno">Desarrollo </span><span class="texto-neon">Python3</span>',
-        '<span class="texto-contorno">Experiencia en </span><span class="texto-neon">CiberSeguridad</span>',
+        '<span class="texto-contorno">Experiencia </span><span class="texto-neon">CiberSeguridad</span>',
         '<span class="texto-contorno">Desarrollo de </span><span class="texto-neon">Scripting</span>',
         '<span class="texto-contorno">Desarrollo </span><span class="texto-neon">Full Stack</span>'
     ],
