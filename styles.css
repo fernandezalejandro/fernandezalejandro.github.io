@@ -19,6 +19,9 @@ span {
 
 .navbar {
   background-color: #000000 !important; /* Fondo negro */
+  padding: 10px 20px; /* Espacio dentro de la navbar (10px arriba y abajo, 20px a los lados) */
+  border-radius: 15px; /* Bordes redondeados */
+  margin: 10px; /* Aleja la navbar de los bordes de la pantalla */
 }
 
 .texto-contorno {
