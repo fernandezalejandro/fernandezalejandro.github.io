@@ -62,8 +62,8 @@ section.container {
 }
 
 body {
-  background-color: whitesmoke;
-  color: black;
+  background-color: whitesmoke  ;
+  color: whites;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -114,4 +114,10 @@ span {
 .typed-cursor {
   font-size: 48px;
   color: black;
+}
+
+.fondo {
+  background-color: black;
+  padding: 40px;
+  border-radius: 20px;
 }
