@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Luz intermitente con sonido</title>
+  <style>
+    body {
+      background-color: black;
+      transition: background-color 0.5s ease;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: sans-serif;
+    }
+    .luz-encendida {
+      background-color: white;
+      color: black;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="iniciar">Iniciar luz intermitente</button>
+
+  <audio id="sonidoEncender" src="https://www.soundjay.com/switch/switch-1.mp3" preload="auto"></audio>
+  <audio id="sonidoApagar" src="https://www.soundjay.com/switch/switch-4.mp3" preload="auto"></audio>
+
+  <script>
+    const boton = document.getElementById('iniciar');
+    const sonidoEncender = document.getElementById('sonidoEncender');
+    const sonidoApagar = document.getElementById('sonidoApagar');
+
+    boton.addEventListener('click', () => {
+      boton.style.display = 'none'; // Oculta el botón
+      let encendida = false;
+
+      setInterval(() => {
+        document.body.classList.toggle('luz-encendida');
+        if (encendida) {
+          sonidoApagar.play();
+        } else {
+          sonidoEncender.play();
+        }
+        encendida = !encendida;
+      }, 10000); // Cada 10 segundos
+    });
+  </script>
+</body>
+</html>
