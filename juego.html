@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Luz intermitente con sonido</title>
+  <title>Juego luz y monstruo</title>
   <style>
     body {
       background-color: black;
@@ -15,10 +15,17 @@
       color: white;
       font-family: sans-serif;
     }
+
     .luz-encendida {
       background-color: white;
       color: black;
     }
+
+    .luz-roja {
+      background-color: red;
+      color: white;
+    }
+
     button {
       padding: 15px 30px;
       font-size: 18px;
@@ -27,28 +34,56 @@
   </style>
 </head>
 <body>
-  <button id="iniciar">Iniciar luz intermitente</button>
-
-  <audio id="sonidoEncender" src="https://www.soundjay.com/switch/switch-1.mp3" preload="auto"></audio>
-  <audio id="sonidoApagar" src="https://www.soundjay.com/switch/switch-4.mp3" preload="auto"></audio>
+  <button id="iniciar">Iniciar Juego</button>
 
   <script>
     const boton = document.getElementById('iniciar');
-    const sonidoEncender = document.getElementById('sonidoEncender');
-    const sonidoApagar = document.getElementById('sonidoApagar');
+
+    const audioLuzOn = new Audio('luz_on.m4a');
+    const audioLuzOff = new Audio('luz_off.m4a');
+    const audioTension = new Audio('luz_tension.m4a');
+
+    let encendida = false;
+    let luzBloqueada = false; // Para evitar cambiar el estado mientras está en rojo
 
     boton.addEventListener('click', () => {
-      boton.style.display = 'none'; // Oculta el botón
-      let encendida = false;
+      boton.style.display = 'none';
 
       setInterval(() => {
-        document.body.classList.toggle('luz-encendida');
+        if (luzBloqueada) return; // Si está en luz roja, no hacer nada
+
         if (encendida) {
-          sonidoApagar.play();
+          // Apagar la luz
+          const usarTension = Math.random() < 0.33;
+
+          if (usarTension) {
+            // Activar luz roja por 10s
+            document.body.classList.remove('luz-encendida');
+            document.body.classList.add('luz-roja');
+            audioTension.currentTime = 0;
+            audioTension.play();
+            luzBloqueada = true;
+
+            setTimeout(() => {
+              document.body.classList.remove('luz-roja');
+              encendida = false; // Se considera apagada después del rojo
+              luzBloqueada = false;
+            }, 10000);
+          } else {
+            document.body.classList.remove('luz-encendida');
+            audioLuzOff.currentTime = 0;
+            audioLuzOff.play();
+            encendida = false;
+          }
+
         } else {
-          sonidoEncender.play();
+          // Encender la luz
+          document.body.classList.add('luz-encendida');
+          audioLuzOn.currentTime = 0;
+          audioLuzOn.play();
+          encendida = true;
         }
-        encendida = !encendida;
+
       }, 10000); // Cada 10 segundos
     });
   </script>
